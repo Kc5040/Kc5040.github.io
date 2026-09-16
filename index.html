@@ -23,7 +23,8 @@
     p { line-height: 1.55; color: var(--muted); }
     .lead { color: var(--fg); font-size: 1.05rem; }
     .doors { display: grid; gap: .5rem; margin: 1.75rem 0; }
-    .door { display: block; text-decoration: none; color: var(--fg); border: 1px solid var(--border); background: var(--elev); padding: 1rem 1.1rem; min-height: 4.5rem; }
+    .door { display: block; text-decoration: none; color: var(--fg); border: 1px solid var(--border); background: var(--elev); padding: 1rem 1.1rem; min-height: 4.5rem; transition: border-color .15s, background .15s; }
+    .door:hover { border-color: var(--gold); background: #1e232c; }
     .door strong { display: block; font-family: "Bebas Neue", Impact, sans-serif; font-size: 1.8rem; letter-spacing: .04em; font-weight: 400; }
     .door span { display: block; font-family: "Barlow Condensed", sans-serif; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-top: .15rem; }
     .sheet { border: 1px solid var(--border); background: #f4efe6; color: #161410; padding: 1.25rem; margin-top: 1.25rem; }
@@ -33,6 +34,12 @@
     .sheet ul { margin: .4rem 0 0; padding-left: 1.1rem; }
     .note { font-size: .9rem; }
     footer { margin-top: 2.5rem; font-size: .85rem; color: var(--muted); }
+    .back { display:inline-block; margin-bottom:1rem; font-family:"Barlow Condensed",sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); text-decoration:none; }
+    .back:hover { text-decoration:underline; }
+    .flow { border:1px solid var(--border); background:var(--elev); padding:1.25rem; margin-top:1rem; }
+    .flow h3 { font-family:"Bebas Neue",Impact,sans-serif; font-size:1.6rem; margin:0 0 .5rem; letter-spacing:.03em; }
+    .flow p { margin:.4rem 0; }
+    .tag { display:inline-block; font-family:"Barlow Condensed",sans-serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--border); padding:.15rem .5rem; margin-right:.4rem; }
   </style>
 </head>
 <body>
@@ -46,18 +53,18 @@
     <p>Three doors. Parent sends film. Athlete builds a player or tours as Jaylen. Coach inbox is last name, capital letters — that code is on the email, not here.</p>
 
     <nav class="doors" aria-label="Gym doors">
-      <div class="door">
+      <a class="door" href="parent.html">
         <strong>Parent</strong>
         <span>Send film · get a Jump Science report</span>
-      </div>
-      <div class="door">
+      </a>
+      <a class="door" href="athlete.html">
         <strong>Athlete</strong>
         <span>2K-style career · labs · missions off the tape</span>
-      </div>
-      <div class="door">
+      </a>
+      <a class="door" href="coach.html">
         <strong>Coach</strong>
         <span>Inbox · deliver the sheet · Digital AJ</span>
-      </div>
+      </a>
     </nav>
 
     <h2>Sample Jump Science sheet</h2>
