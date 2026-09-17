@@ -21,11 +21,19 @@
     .back { display:inline-block; margin-bottom:1rem; font-family:"Barlow Condensed",sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); text-decoration:none; }
     .back:hover { text-decoration:underline; }
     .flow { border:1px solid var(--border); background:var(--elev); padding:1.25rem; margin-top:1rem; }
-    .flow h3 { font-family:"Bebas Neue",Impact,sans-serif; font-size:1.6rem; margin:0 0 .5rem; letter-spacing:.03em; }
+    .flow h3 { font-family: "Bebas Neue",Impact,sans-serif; font-size:1.6rem; margin:0 0 .5rem; letter-spacing:.03em; }
     .flow p { margin:.4rem 0; }
     .tag { display:inline-block; font-family:"Barlow Condensed",sans-serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--border); padding:.15rem .5rem; margin-right:.4rem; }
     .btn { display:inline-block; margin-top:1rem; padding:.8rem 1.2rem; border:1px solid var(--gold); color:var(--gold); text-decoration:none; font-family:"Barlow Condensed",sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.9rem; }
     .code { font-family:monospace; color:var(--gold); }
+    .preview-btn { display:inline-block; margin-top:.8rem; padding:.6rem 1rem; border:1px solid var(--gold); background:transparent; color:var(--gold); font-family:"Barlow Condensed",sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.85rem; cursor:pointer; }
+    .preview-btn:hover { background:var(--gold); color:var(--bg); }
+    .preview-panel { display:none; margin-top:1rem; padding:1rem; border:1px dashed var(--border); background:#0d1015; }
+    .preview-panel.open { display:block; }
+    .preview-panel h4 { margin:0 0 .5rem; font-family:"Bebas Neue",Impact,sans-serif; color:var(--gold); }
+    .preview-panel .sample { background:#f4efe6; color:#161410; padding:.8rem; margin-top:.5rem; font-size:.9rem; }
+    .preview-panel input, .preview-panel textarea { width:100%; background:#08090c; border:1px solid var(--border); color:var(--fg); padding:.6rem; margin-top:.5rem; font-family:inherit; }
+    .preview-panel button { margin-top:.5rem; padding:.5rem .8rem; background:var(--gold); color:var(--bg); border:none; font-family:"Barlow Condensed",sans-serif; text-transform:uppercase; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -40,17 +48,61 @@
     <div class="flow">
       <h3>1. Inbox</h3>
       <p><span class="tag">Preview</span> Parent film and Jump Science sheets land here. Review the cue from the tape.</p>
+      <button class="preview-btn" onclick="togglePreview('inbox-panel')">Open Inbox Preview</button>
+      <div id="inbox-panel" class="preview-panel">
+        <h4>Coach Inbox</h4>
+        <p>Sample incoming film from a parent:</p>
+        <div class="sample">
+          <strong>From:</strong> Parent · Yellow #4 · Lion Life<br>
+          <strong>Clip:</strong> 12s phone video · jumper + finisher<br>
+          <strong>Cue from tape:</strong> High release, elevates well, elbow sloppy on contested gathers.<br>
+          <strong>Status:</strong> Sheet generated · ready to review.
+        </div>
+        <p style="margin-top:.8rem">Tap to mark reviewed (demo):</p>
+        <button onclick="this.textContent='Reviewed ✓'; this.style.background='#2a4d2a';">Mark Reviewed</button>
+      </div>
     </div>
+
     <div class="flow">
       <h3>2. Deliver the sheet</h3>
       <p><span class="tag">Preview</span> Send the developmental report back to the family. Honest tone, no recruiting projection.</p>
+      <button class="preview-btn" onclick="togglePreview('sheet-panel')">Open Sheet Preview</button>
+      <div id="sheet-panel" class="preview-panel">
+        <h4>Deliver Jump Science Sheet</h4>
+        <div class="sample">
+          <strong>Yellow #4 · Lion Life</strong><br>
+          Ask: Jumper + finishing / elevation<br>
+          Current level: Above-average youth jumper with athleticism supporting the shot.<br>
+          Work: Widen base · slow the load · hold follow-through.<br>
+          Bottom line: Elevation and willingness to shoot are real advantages.
+        </div>
+        <p style="margin-top:.8rem">Send to family (demo):</p>
+        <input type="email" placeholder="parent@email.com" value="parent@example.com" />
+        <button onclick="this.textContent='Sent ✓'; this.style.background='#2a4d2a';">Send Sheet</button>
+      </div>
     </div>
+
     <div class="flow">
       <h3>3. Digital AJ</h3>
       <p><span class="tag">Preview</span> Paste the avatar ID. He speaks the crew cue. Our coach brain writes the line. His mouth.</p>
+      <button class="preview-btn" onclick="togglePreview('aj-panel')">Open Digital AJ Preview</button>
+      <div id="aj-panel" class="preview-panel">
+        <h4>Digital AJ</h4>
+        <p>Paste avatar ID (demo):</p>
+        <input type="text" placeholder="avatar_id_here" value="AJ_YELLOW4" />
+        <p>Crew cue line (auto-written):</p>
+        <textarea rows="3" readonly>"Yellow four, you got the hops. Now make the elbow stay quiet when the hand's in your face. That's the work."</textarea>
+        <button onclick="this.textContent='Spoke ✓'; this.style.background='#2a4d2a';">Play Cue</button>
+      </div>
     </div>
 
     <a class="btn" href="index.html">Back to the three doors</a>
   </main>
+  <script>
+    function togglePreview(id) {
+      var el = document.getElementById(id);
+      if (el) el.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
