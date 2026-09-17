@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Level Up Basketball · Jaylen Carter</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07080b;--panel:#12151c;--gold:#d4a84b;--fg:#f3eee4;--muted:#8b919a;--line:rgba(243,238,228,.1)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:Barlow,system-ui,sans-serif}
+body{display:flex;min-height:100dvh;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:48px 48px}
+a{color:var(--gold);text-decoration:none}
+.side{width:220px;background:#0b0d12;border-right:1px solid var(--line);padding:14px 10px;display:flex;flex-direction:column;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:8px;padding:6px 8px 18px}
+.logo{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#c9a227,#7a4a12);display:grid;place-items:center;font:700 10px Barlow Condensed;color:#111}
+.brand small{display:block;font:600 9px/1 Barlow Condensed;letter-spacing:.16em;color:var(--gold)}
+.brand b{font:600 11px Barlow Condensed;letter-spacing:.08em}
+nav button{width:100%;text-align:left;background:transparent;border:0;color:var(--muted);padding:9px 10px;border-radius:6px;font:600 12px Barlow Condensed;letter-spacing:.08em;cursor:pointer}
+nav button:hover,nav button.active{background:#1a1408;color:var(--gold)}
+.sec{font:600 10px Barlow Condensed;letter-spacing:.18em;color:#5c6168;padding:14px 10px 6px}
+.seat{margin-top:auto;background:#141820;border:1px solid var(--line);padding:10px;border-radius:8px;font-size:11px}
+.seat b{display:block;font-family:Bebas Neue,Impact,sans-serif;font-size:18px;letter-spacing:.03em}
+.main{flex:1;padding:22px 28px 80px;overflow:auto}
+.top{display:flex;justify-content:flex-end;gap:16px;font:600 11px Barlow Condensed;letter-spacing:.14em;color:var(--muted)}
+.kicker{font:700 11px Barlow Condensed;letter-spacing:.2em;color:var(--gold);margin:18px 0 0}
+h1{font:400 clamp(2.4rem,6vw,4.4rem)/.9 Bebas Neue,Impact,sans-serif;margin:4px 0 6px}
+.sub{color:var(--muted);letter-spacing:.12em;font:600 12px Barlow Condensed;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:1fr 280px;gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.label{font:700 11px Barlow Condensed;letter-spacing:.16em;color:var(--gold)}
+.card h2{font:400 2rem/.95 Bebas Neue,Impact,sans-serif;margin:6px 0 8px}
+.row{display:flex;gap:10px;margin-top:14px}
+.btn{background:var(--gold);color:#111;border:0;padding:10px 16px;border-radius:8px;font:700 12px Barlow Condensed;letter-spacing:.08em;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{display:block;font:400 1.8rem Bebas Neue,Impact,sans-serif}
+.player{text-align:center}
+.ovr{position:absolute;left:14px;top:14px;background:var(--gold);color:#111;font:700 22px Bebas Neue;padding:4px 8px;border-radius:4px}
+.art{position:relative;height:280px;border-radius:10px;overflow:hidden;background:radial-gradient(circle at 50% 30%,#3a2a12,#0b0d12 70%)}
+.sil{position:absolute;inset:30px 40px 0;background:linear-gradient(#1a1a1a,#000);clip-path:ellipse(38% 48% at 50% 38%)}
+.player h3{font:400 1.7rem Bebas Neue,Impact,sans-serif;margin:10px 0 0}
+.xp{margin-top:10px}
+.bar{height:6px;background:#222;border-radius:99px;overflow:hidden;margin-top:8px}
+.fill{width:88%;height:100%;background:linear-gradient(90deg,#c45c22,var(--gold))}
+.view{display:none}.view.on{display:block}
+.sideline{position:fixed;right:18px;bottom:18px;background:var(--gold);color:#111;border:0;padding:12px 16px;border-radius:8px;font:700 12px Barlow Condensed;letter-spacing:.1em;cursor:pointer}
+@media(max-width:900px){.side{display:none}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><div class="logo">LU</div><div><small>LEVEL UP</small><b>BUILD YOUR PLAYER</b></div></div>
+  <nav id="nav">
+    <button class="active" data-view="home">HOME</button>
+    <button data-view="player">MY PLAYER</button>
+    <button data-view="evals">EVALS</button>
+    <button data-view="train">TRAIN</button>
+    <button data-view="coach">AI COACH</button>
+    <div class="sec">FACILITY</div>
+    <button data-view="film">FILM ROOM</button>
+    <button data-view="reports">REPORTS</button>
+    <button data-view="chart">SHOT CHART</button>
+    <button data-view="lab">SKILLS LAB</button>
+    <button data-view="badges">BADGES</button>
+    <button data-view="challenges">CHALLENGES</button>
+    <button data-view="boards">BOARDS</button>
+    <button data-view="combine">COMBINE</button>
+    <button data-view="perf">PERFORMANCE</button>
+    <button data-view="cal">CALENDAR</button>
+    <button data-view="profile">PROFILE</button>
+  </nav>
+  <div class="seat">PG · 83 OVR<b>JAYLEN CARTER</b></div>
+</aside>
+<section class="main">
+  <div class="top"><a href="index.html">SWITCH SEAT</a></div>
+
+  <div id="home" class="view on">
+    <p class="kicker">GOOD EVENING.</p>
+    <h1>JAYLEN CARTER</h1>
+    <p class="sub">FINISH THE DAY STRONG.</p>
+    <div class="grid">
+      <div>
+        <div class="card">
+          <div class="label">TODAY'S MISSION</div>
+          <h2>FREE THROW CLUTCH</h2>
+          <p style="color:var(--muted)">12 min · +260 XP · Daily is 20 straight free throws. This session moves the bar.</p>
+          <div class="row"><button class="btn" onclick="show('train')">START TRAINING</button><button class="btn ghost" onclick="show('lab')">DETAILS</button></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="label">STREAK</div><b>12 DAY</b></div>
+          <div class="stat"><div class="label">RANK</div><b>ELITE</b></div>
+          <div class="stat"><div class="label">BADGES</div><b>11</b></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <div class="label">LEVEL GUIDE</div>
+          <p>Daily is 20 straight free throws. This session moves the bar.</p>
+          <a href="#" onclick="show('coach');return false;">OPEN COACH</a>
+        </div>
+      </div>
+      <div>
+        <div class="card player">
+          <div class="art"><span class="ovr">83</span><div class="sil"></div></div>
+          <div style="text-align:right;color:var(--muted);font:700 11px Barlow Condensed">PG · ELITE · LV 24</div>
+          <h3>JAYLEN CARTER</h3>
+          <div class="label">TWO-WAY SHOT CREATOR</div>
+          <p style="color:var(--muted);font-size:12px">6'2" · 175 LBS · SAN ANTONIO</p>
+        </div>
+        <div class="card xp">
+          <div class="label">XP</div>
+          <b style="font:400 1.8rem Bebas Neue">1408 / 1600</b>
+          <div class="bar"><div class="fill"></div></div>
+          <p style="color:var(--muted);font-size:12px">Assessment confidence 97%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="player" class="view"><p class="kicker">MY PLAYER</p><h1>BUILD</h1><div class="card"><p>Tour as Jaylen. Stats, badges, and path live here. This is the public preview of the career card.</p><p>OVR 83 · PG · Two-Way Shot Creator · Level 24</p></div></div>
+  <div id="evals" class="view"><p class="kicker">EVALS</p><h1>JUMP SCIENCE</h1><div class="card"><p>Sample sheet tone: developmental, honest, no recruiting projection. Cue from the film is law.</p><p><b>Ask:</b> Jumper + finishing / elevation<br><b>Work:</b> base, load, follow-through.</p></div></div>
+  <div id="train" class="view"><p class="kicker">TRAIN</p><h1>FREE THROW CLUTCH</h1><div class="card"><p>20 straight free throws. 12 minutes. +260 XP.</p><button class="btn">MARK SET COMPLETE</button></div></div>
+  <div id="coach" class="view"><p class="kicker">AI COACH</p><h1>DIGITAL AJ</h1><div class="card"><p>Clone in LiveAvatar. Paste the avatar ID on the inbox desk. He speaks the crew cue. Our coach brain writes the line.</p></div></div>
+  <div id="film" class="view"><p class="kicker">FILM ROOM</p><h1>TAPE</h1><div class="card"><p>Parent sends film. Empty clip is honest when there is no live action. Phone film is not a tracking camera.</p></div></div>
+  <div id="reports" class="view"><p class="kicker">REPORTS</p><h1>SHEETS</h1><div class="card"><p>Jump Science reports land here after tape is read. Coach delivers the sheet to the family.</p></div></div>
+  <div id="chart" class="view"><p class="kicker">SHOT CHART</p><h1>MAP</h1><div class="card"><p>Preview: shot locations from the last session. Live tracking is not claimed from phone film.</p></div></div>
+  <div id="lab" class="view"><p class="kicker">SKILLS LAB</p><h1>LABS</h1><div class="card"><p>Missions off the tape. Base stability. Slow the load. Frozen follow-through.</p></div></div>
+  <div id="badges" class="view"><p class="kicker">BADGES</p><h1>11 EARNED</h1><div class="card"><p>Clutch FT, Contested Jumper, Two-Way, Film Student, Streak 12.</p></div></div>
+  <div id="challenges" class="view"><p class="kicker">CHALLENGES</p><h1>DAILY</h1><div class="card"><p>20 straight free throws. This session moves the bar.</p></div></div>
+  <div id="boards" class="view"><p class="kicker">BOARDS</p><h1>RANKS</h1><div class="card"><p>Jaylen · Elite. Local San Antonio board preview only.</p></div></div>
+  <div id="combine" class="view"><p class="kicker">COMBINE</p><h1>TESTING</h1><div class="card"><p>No dunk-by-date. No scholarship promise. Combine numbers stay developmental.</p></div></div>
+  <div id="perf" class="view"><p class="kicker">PERFORMANCE</p><h1>TREND</h1><div class="card"><p>XP 1408 / 1600. Assessment confidence 97%.</p></div></div>
+  <div id="cal" class="view"><p class="kicker">CALENDAR</p><h1>WEEK</h1><div class="card"><p>Today: Free Throw Clutch. Rest days stay rest days.</p></div></div>
+  <div id="profile" class="view"><p class="kicker">PROFILE</p><h1>JAYLEN</h1><div class="card"><p>6'2" · 175 · San Antonio · PG · Level 24</p><p><a href="index.html">Back to the three doors</a></p></div></div>
+</section>
+<button class="sideline" onclick="alert('Sideline chat preview — coach + athlete notes live here.')">SIDELINE</button>
+<script>
+function show(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b.dataset.view===id));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.view));
+</script>
+</body>
+</html>

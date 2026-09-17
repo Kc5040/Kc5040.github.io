@@ -4,98 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Athlete · Level Up Basketball</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     :root { --bg:#08090c; --fg:#f3eee4; --muted:#9aa0a8; --gold:#d4a84b; --elev:#171b22; --border:rgba(243,238,228,.12); }
     * { box-sizing: border-box; }
     html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: Barlow, system-ui, sans-serif; }
-    body { min-height: 100dvh; }
-    a { color: var(--gold); }
-    header { padding: 1.25rem 1.25rem 0; }
-    .kicker { font-family: "Barlow Condensed", sans-serif; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin: 0; }
-    h1 { font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(2.5rem, 10vw, 4rem); line-height: .9; margin: .25rem 0 0; font-weight: 400; }
     main { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
-    p { line-height: 1.55; color: var(--muted); }
-    .back { display:inline-block; margin-bottom:1rem; font-family:"Barlow Condensed",sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); text-decoration:none; }
-    .back:hover { text-decoration:underline; }
-    .flow { border:1px solid var(--border); background:var(--elev); padding:1.25rem; margin-top:1rem; }
-    .flow h3 { font-family: "Bebas Neue",Impact,sans-serif; font-size:1.6rem; margin:0 0 .5rem; letter-spacing:.03em; }
-    .flow p { margin:.4rem 0; }
-    .tag { display:inline-block; font-family:"Barlow Condensed",sans-serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--border); padding:.15rem .5rem; margin-right:.4rem; }
-    .btn { display:inline-block; margin-top:1rem; padding:.8rem 1.2rem; border:1px solid var(--gold); color:var(--gold); text-decoration:none; font-family:"Barlow Condensed",sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.9rem; }
-    .preview-btn { display:inline-block; margin-top:.8rem; padding:.6rem 1rem; border:1px solid var(--gold); background:transparent; color:var(--gold); font-family:"Barlow Condensed",sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.85rem; cursor:pointer; }
-    .preview-btn:hover { background:var(--gold); color:var(--bg); }
-    .preview-panel { display:none; margin-top:1rem; padding:1rem; border:1px dashed var(--border); background:#0d1015; }
-    .preview-panel.open { display:block; }
-    .preview-panel h4 { margin:0 0 .5rem; font-family:"Bebas Neue",Impact,sans-serif; color:var(--gold); }
-    .preview-panel .sample { background:#f4efe6; color:#161410; padding:.8rem; margin-top:.5rem; font-size:.9rem; }
-    .preview-panel input, .preview-panel select { width:100%; background:#08090c; border:1px solid var(--border); color:var(--fg); padding:.6rem; margin-top:.5rem; font-family:inherit; }
-    .preview-panel button { margin-top:.5rem; padding:.5rem .8rem; background:var(--gold); color:var(--bg); border:none; font-family:"Barlow Condensed",sans-serif; text-transform:uppercase; cursor:pointer; }
+    .kicker { font-family: "Barlow Condensed", sans-serif; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+    h1 { font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(2.5rem, 10vw, 4rem); line-height: .9; margin: .25rem 0 0; font-weight: 400; }
+    p { color: var(--muted); line-height: 1.55; }
+    a { color: var(--gold); }
+    .btn { display:inline-block; margin-top:1rem; padding:.9rem 1.2rem; background:var(--gold); color:#111; text-decoration:none; font-family:"Barlow Condensed",sans-serif; letter-spacing:.1em; text-transform:uppercase; }
   </style>
 </head>
 <body>
-  <header>
-    <p class="kicker">Level Up Basketball · Athlete Door</p>
-  </header>
   <main>
-    <a class="back" href="index.html">← Back to gym floor</a>
-    <h1>Athlete</h1>
-    <p>2K-style career. Labs. Missions off the tape. Tour as Jaylen.</p>
-
-    <div class="flow">
-      <h3>1. Build the player</h3>
-      <p><span class="tag">Preview</span> Choose look, stats, and the path. Earn XP from drills, film, and missions.</p>
-      <button class="preview-btn" onclick="togglePreview('build-panel')">Open Build Preview</button>
-      <div id="build-panel" class="preview-panel">
-        <h4>Build Your Player</h4>
-        <p>Demo builder:</p>
-        <select>
-          <option>Jaylen · 6'2" Wing</option>
-          <option>Point Guard</option>
-          <option>Big</option>
-        </select>
-        <input type="text" placeholder="Player name" value="Jaylen" />
-        <button onclick="this.textContent='Player created ✓'; this.style.background='#2a4d2a';">Create Player</button>
-        <div class="sample" style="margin-top:.8rem">XP: 0 · Level 1 · Path: Wing scorer</div>
-      </div>
-    </div>
-    <div class="flow">
-      <h3>2. Labs & missions</h3>
-      <p><span class="tag">Preview</span> Jump science labs, finishing missions, and film study that feed the career.</p>
-      <button class="preview-btn" onclick="togglePreview('labs-panel')">Open Labs Preview</button>
-      <div id="labs-panel" class="preview-panel">
-        <h4>Labs & Missions</h4>
-        <div class="sample">
-          <strong>Mission 1:</strong> Contested jumper — 10 makes<br>
-          <strong>Lab:</strong> Base stability drill<br>
-          <strong>Reward:</strong> +25 XP, unlock finishing badge
-        </div>
-        <button onclick="this.textContent='Mission started ✓'; this.style.background='#2a4d2a';">Start Mission</button>
-      </div>
-    </div>
-    <div class="flow">
-      <h3>3. Level up</h3>
-      <p><span class="tag">Preview</span> Levels unlock gear, features, and skill points. No scholarship promise — just the work.</p>
-      <button class="preview-btn" onclick="togglePreview('level-panel')">Open Level Preview</button>
-      <div id="level-panel" class="preview-panel">
-        <h4>Level Up</h4>
-        <div class="sample">
-          Level 2 unlocked: new shoe color, +1 skill point.<br>
-          Next: 50 XP to Level 3.
-        </div>
-        <button onclick="this.textContent='Leveled up ✓'; this.style.background='#2a4d2a';">Claim Reward</button>
-      </div>
-    </div>
-
-    <a class="btn" href="index.html">Back to the three doors</a>
+    <p class="kicker">Athlete door</p>
+    <h1>Open the gym</h1>
+    <p>This is the Jaylen Carter career home — missions, film room, AI coach, labs. No Grok login.</p>
+    <a class="btn" href="gym.html">Enter Jaylen Carter gym</a>
+    <p style="margin-top:2rem"><a href="index.html">← Back to the three doors</a></p>
   </main>
-  <script>
-    function togglePreview(id) {
-      var el = document.getElementById(id);
-      if (el) el.classList.toggle('open');
-    }
-  </script>
 </body>
 </html>
